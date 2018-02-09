@@ -88,7 +88,7 @@ hr {
   overflow: visible; // allows localised text to overflow if longer
   @media (min-width: $mq-l) {
      padding-left: 1.6em;
-     margin: 0.4em;
+     margin-top: 4px;
      float: right;
      max-width: none;
      width: auto;
@@ -99,12 +99,17 @@ hr {
   font-weight: bold;
   float: left;
   display: inline-block;
+  @media (min-width: $mq-l) {
+    margin-right: 0;
+    padding: 0.2em 0.6em;
+    height: 4em;
+    }
 }
 .site-nav li:last-child {
   margin-right: 0;
 }
 .site-nav a {
-  text-decoration: none;
+  text-decoration: none!important; // overrides specific page active states
 }
 .site-nav a:hover {
   text-decoration: underline;
@@ -503,12 +508,22 @@ input, button, submit { border:none; }
 
 // active nav highlighting
 
-body.about nav a.about,
-body.create nav a.create,
-body.examples nav a.examples,
-body.contribute nav a.contribute {
+body.about nav li.about, li.about:hover,
+body.create nav li.create, li.create:hover,
+body.examples nav li.examples, li.examples:hover,
+body.contribute nav li.contribute, li.contribute:hover,
+li.news:hover {
   text-decoration: underline;
+  cursor: pointer;
+
+  @media (min-width: $mq-l) {
+    text-decoration: none;
+    border-top: solid 4px $black;
+    margin-top: -4px;
+    background: lighten($primary, 10%);
+    }
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
